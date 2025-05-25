@@ -23,7 +23,7 @@
     let currentPunchline = ''  
 
     async function fetchJoke() {
-        const res = await fetch('http://localhost:3000/api/joke')
+        const res = await fetch('/api/joke')
         const data = await res.json()
         
         document.getElementById('jokeText').innerText = data.joke
