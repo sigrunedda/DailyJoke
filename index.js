@@ -16,16 +16,13 @@ const pool = new pg.Pool({
 app.use(cors())
 app.use(express.json())
 
-// Þjóna HTML/CSS/JS úr public/
 app.use(express.static('public'))
 
-// API route: sækja brandara
 app.get('/api/joke', async (req, res) => {
   const result = await pool.query('SELECT * FROM jokes ORDER BY RANDOM() LIMIT 1')
   res.json(result.rows[0])
 })
 
-// Starta servernum
 app.listen(port, () => {
   console.log(`Server keyrir á http://localhost:${port}`)
 })
